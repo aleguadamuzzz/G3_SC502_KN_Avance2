@@ -17,4 +17,24 @@ La solución consiste en una plataforma web interactiva dividida en distintos m�
 -  **Notificaciones**: alertas sobre alimentos cercanos, reservas activas o vencidas.
 -  **Módulo de administración**: control de usuarios, moderación de contenido y estadísticas de impacto (alimentos rescatados).
 
+## Estructura del proyecto
 
+proyecto/
+├── index.html
+├── login.php
+├── register.php
+├── publicar.php
+├── buscar.php
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+└── README.md
+
+## Validaciones implementadas
+
+- **Contra**: Mínimo 6 caracteres.
+- **Nombre de usuario**: Mínimo 3 caracteres.
+- **Publicar alimento**: Nombre: obligatorio, Descripción: mínimo 5 caracteres, Fecha de caducidad: debe seleccionarse, Ubicación: formato latitud,longitud (ej. 9.9312,-84.0791).
+
+- Estas validaciones son clientes y se por lo tanto se tienen que complementar con el servidor y ademas se pueden personalizar los mensajes en lugar de un simple alert para un diseño mas estetico.

@@ -1,28 +1,131 @@
 body {
-      font-family: 'Times New Roman', Times, serif;
-      color: #333;
-      background-color: white;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  padding-bottom: 100px;
+}
 
-    }
-    header {
-      background-color: white
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    footer {
-      text-align: left;
-      margin-top: 150px;
-      font-size: 0.9em;
-      color: #000000;
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      text-align: center;
-      padding: 10px 0;
-      
-    }
+.form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 20px;
+  padding-right: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  background: #ffffffdd;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #0366d6;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background: #0366d6;
+  color: #fff;
+}
+
+main {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #ffffffdd;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #102a43;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+button:hover {
+  background: #218838;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccd0d5;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background: #ffffffdd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.mapa iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lista-alimentos {
+  list-style: none;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.lista-alimentos li {
+  background: #ffffff;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-left: 4px solid #28a745;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
