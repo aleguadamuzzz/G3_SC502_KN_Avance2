@@ -79,6 +79,7 @@ $conn->close();
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="publicar.php">Publicar Alimento</a></li>
                 <li><a href="buscar.php">Buscar Alimentos</a></li>
+                <li><a href="panel_usuario.php">Mi Panel</a></li>
                 <li><a href="logout.php">Cerrar Sesión (<?= $_SESSION['username'] ?>)</a></li>
             </ul>
         </nav>

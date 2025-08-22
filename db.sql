@@ -23,6 +23,47 @@ CREATE TABLE alimentos (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
+--
+-- Tabla para gestionar las reservaciones de alimentos.
+-- Almacena cuál usuario ha reservado qué alimento y su estado.
+CREATE TABLE IF NOT EXISTS reservaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alimento_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    fecha_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado ENUM('pendiente','aceptada','rechazada','completada') DEFAULT 'pendiente',
+    FOREIGN KEY (alimento_id) REFERENCES alimentos(id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+--
+-- Tabla para intercambiar mensajes entre usuarios.
+-- Permite la comunicación directa asociada a un alimento en particular.
+CREATE TABLE IF NOT EXISTS mensajes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alimento_id INT,
+    remitente_id INT NOT NULL,
+    destinatario_id INT NOT NULL,
+    contenido TEXT NOT NULL,
+    fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    leido BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (alimento_id) REFERENCES alimentos(id) ON DELETE CASCADE,
+    FOREIGN KEY (remitente_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (destinatario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+--
+-- Tabla de notificaciones para avisar a los usuarios sobre eventos relevantes
+-- como nuevos alimentos cercanos, reservas o nuevos mensajes.
+CREATE TABLE IF NOT EXISTS notificaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    mensaje VARCHAR(255) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    leido BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
 -- Crear usuario administrador por defecto
 -- Usuario: admin, Contraseña: admin123
 INSERT INTO usuarios (username, email, password, rol) VALUES 

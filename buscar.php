@@ -11,6 +11,20 @@ $query = "SELECT a.*, u.username FROM alimentos a
           ORDER BY a.fecha_publicacion DESC";
 $result = $conn->query($query);
 $alimentos = $result->fetch_all(MYSQLI_ASSOC);
+
+// Si el usuario está logueado, obtener los alimentos que ya ha reservado para mostrar botón apropiado
+$reservados_usuario = [];
+if (isset($_SESSION['usuario_id'])) {
+    $uid = $_SESSION['usuario_id'];
+    $stmtRes = $conn->prepare("SELECT alimento_id FROM reservaciones WHERE usuario_id = ?");
+    $stmtRes->bind_param("i", $uid);
+    $stmtRes->execute();
+    $resList = $stmtRes->get_result()->fetch_all(MYSQLI_ASSOC);
+    foreach ($resList as $r) {
+        $reservados_usuario[] = $r['alimento_id'];
+    }
+    $stmtRes->close();
+}
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -32,6 +46,7 @@ $conn->close();
         <li><a href="index.html">Inicio</a></li>
         <?php if (isset($_SESSION['usuario_id'])): ?>
           <li><a href="publicar.php">Publicar Alimento</a></li>
+          <li><a href="panel_usuario.php">Mi Panel</a></li>
           <li><a href="logout.php">Cerrar Sesión (<?= $_SESSION['username'] ?>)</a></li>
           <?php if ($_SESSION['rol'] === 'admin'): ?>
             <li><a href="admin.php">Panel Admin</a></li>
@@ -202,9 +217,26 @@ $conn->close();
                     <i class="fas fa-share-alt me-1"></i>
                     Intercambio disponible
                   </small>
-                  <button class="btn btn-sm btn-outline-success">
-                    <i class="fas fa-envelope me-1"></i>Contactar
-                  </button>
+                  <?php
+                  // Determinar qué acción mostrar en función del estado de la reserva y del usuario
+                  $isOwnerCard = (isset($_SESSION['usuario_id']) && $_SESSION['usuario_id'] == $alimento['usuario_id']);
+                  $isReservedByUser = (isset($_SESSION['usuario_id']) && in_array($alimento['id'], $reservados_usuario));
+                  ?>
+                  <?php if (!isset($_SESSION['usuario_id'])): ?>
+                    <a href="login.php" class="btn btn-sm btn-outline-success">
+                      <i class="fas fa-sign-in-alt me-1"></i>Inicia sesión
+                    </a>
+                  <?php elseif ($isOwnerCard): ?>
+                    <span class="badge bg-secondary">Es tu publicación</span>
+                  <?php elseif ($isReservedByUser): ?>
+                    <a href="mensaje.php?alimento_id=<?= $alimento['id'] ?>" class="btn btn-sm btn-outline-primary">
+                      <i class="fas fa-comments me-1"></i>Ver chat
+                    </a>
+                  <?php else: ?>
+                    <a href="mensaje.php?alimento_id=<?= $alimento['id'] ?>" class="btn btn-sm btn-outline-success">
+                      <i class="fas fa-envelope me-1"></i>Reservar y contactar
+                    </a>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>

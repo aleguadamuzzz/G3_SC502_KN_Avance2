@@ -49,7 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($stmt->execute()) {
                 $success = "¡Alimento publicado exitosamente!";
+                // Limpiar el formulario
                 $_POST = array();
+
+                // Enviar notificaciones a los demas usuarios sobre este nuevo alimento
+                // La notificacion advierte sobre un nuevo alimento disponible en cierta ubicacion.
+                $alimento_id = $stmt->insert_id;
+                $nombre_alimento = $nombre;
+                $ubicacion_alimento = $ubicacion;
+                // Obtener todos los usuarios excepto el que publica
+                $usuarios_stmt = $conn->prepare("SELECT id FROM usuarios WHERE id != ?");
+                $usuarios_stmt->bind_param("i", $_SESSION['usuario_id']);
+                $usuarios_stmt->execute();
+                $usuarios_result = $usuarios_stmt->get_result();
+                $notif_stmt = $conn->prepare("INSERT INTO notificaciones (usuario_id, mensaje) VALUES (?, ?)");
+                while ($row = $usuarios_result->fetch_assoc()) {
+                    $uid = $row['id'];
+                    $mensaje_notif = "Nuevo alimento disponible: " . $nombre_alimento . " en " . $ubicacion_alimento;
+                    $notif_stmt->bind_param("is", $uid, $mensaje_notif);
+                    $notif_stmt->execute();
+                }
+                $usuarios_stmt->close();
+                $notif_stmt->close();
             } else {
                 $error = "Error al publicar el alimento.";
             }
@@ -77,7 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li><a href="index.html">Inicio</a></li>
         <li><a href="publicar.php">Publicar Alimento</a></li>
         <li><a href="buscar.php">Buscar Alimentos</a></li>
-        <li><a href="logout.php">Cerrar Sesion (<?= $_SESSION['username'] ?>)</a></li>
+        <li><a href="panel_usuario.php">Mi Panel</a></li>
+        <li><a href="logout.php">Cerrar Sesión (<?= $_SESSION['username'] ?>)</a></li>
         <?php if ($_SESSION['rol'] === 'admin'): ?>
             <li><a href="admin.php">Panel Admin</a></li>
         <?php endif; ?>

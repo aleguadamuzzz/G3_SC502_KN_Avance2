@@ -14,17 +14,19 @@
         .then(data => {
           const nav = document.querySelector('nav ul');
           if (data.logged_in) {
+            // Si el usuario está logueado mostramos opciones adicionales como el panel de usuario
             nav.innerHTML = `
               <li><a href="index.html">Inicio</a></li>
               <li><a href="publicar.php">Publicar Alimento</a></li>
               <li><a href="buscar.php">Buscar Alimentos</a></li>
-              <li><a href="logout.php">Cerrar Sesion (${data.username})</a></li>
+              <li><a href="panel_usuario.php">Mi Panel</a></li>
+              <li><a href="logout.php">Cerrar Sesión (${data.username})</a></li>
               ${data.is_admin ? '<li><a href="admin.php">Panel Admin</a></li>' : ''}
             `;
           } else {
             nav.innerHTML = `
               <li><a href="index.html">Inicio</a></li>
-              <li><a href="login.php">Iniciar Sesion</a></li>
+              <li><a href="login.php">Iniciar Sesión</a></li>
               <li><a href="register.php">Registrarse</a></li>
               <li><a href="buscar.php">Buscar Alimentos</a></li>
             `;
