@@ -25,6 +25,20 @@ proyecto/
 ├── register.php
 ├── publicar.php
 ├── buscar.php
+├── reservar.php 
+├── mensajes.php 
+├── panel.php
+├── mapa.php
+├── admin.php
+├── check_session.php
+├── logout.php
+├── README.md
+├── db.sql
+├── Red de Intercambio de Alimentos.png
+├── Evidencias/
+├── Descipción de los modulos/
+├── config/
+│   └── db.php
 ├── css/
 │   └── style.css
 ├── js/
