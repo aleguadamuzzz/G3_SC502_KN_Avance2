@@ -84,6 +84,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="date"],
+input[type="file"],
 textarea {
   width: 100%;
   padding: 10px;
@@ -129,3 +130,96 @@ footer {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   font-weight: 500;
 }
+
+.alimentos-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.alimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 100px;
+}
+
+.alimento-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.alimento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.alimento-imagen {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.alimento-info {
+  padding: 15px;
+}
+
+.alimento-info h4 {
+  margin: 0 0 10px 0;
+  color: #28a745;
+  font-size: 1.2em;
+}
+
+.alimento-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.urgencia {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.urgencia.urgente {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.urgencia.proximo {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.urgencia.normal {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
