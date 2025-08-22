@@ -25,13 +25,11 @@ proyecto/
 ├── register.php
 ├── publicar.php
 ├── buscar.php
-├── reservar.php 
-├── mensajes.php 
-├── panel.php
+├── mensaje.php 
+├── panel_usuario.php
 ├── admin.php
 ├── check_session.php
 ├── logout.php
-├── README.md
 ├── db.sql
 ├── Red de Intercambio de Alimentos.png
 ├── Evidencias/
