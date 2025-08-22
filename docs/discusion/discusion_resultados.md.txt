@@ -1,0 +1,22 @@
+# Discusión de Resultados
+
+## Registro de usuarios
+El sistema permitió registrar usuarios correctamente. Cuando se intentó registrar un mismo correo o nombre de usuario, mostró el mensaje de error correspondiente. Esto asegura que no existan duplicados en la base de datos.
+
+## Inicio de sesión
+Los usuarios pudieron iniciar sesión con sus credenciales correctas. Cuando se ingresó una contraseña errónea, el sistema bloqueó el acceso, mostrando un mensaje adecuado.
+
+## Publicación de alimentos
+Se logró registrar alimentos indicando nombre, descripción, fecha de caducidad, ubicación e imagen. Los alimentos quedaron vinculados al usuario que los publicó.  
+Los registros se visualizaron en la base de datos y luego fueron mostrados en la interfaz de búsqueda.
+
+## Búsqueda de alimentos
+Los usuarios pudieron consultar los alimentos disponibles. La interfaz mostró correctamente las imágenes, descripciones y fechas.  
+La información fue clara y útil para identificar qué alimentos estaban próximos a caducar.
+
+## Conclusiones
+Los resultados evidencian que el sistema cumple con sus objetivos principales:
+- Facilita la creación de cuentas.
+- Permite el inicio de sesión seguro.
+- Garantiza que los alimentos se registren con información esencial.
+- Ofrece un medio para visualizar e intercambiar alimentos de manera ágil.
