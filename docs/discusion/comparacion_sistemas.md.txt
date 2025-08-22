@@ -1,0 +1,26 @@
+# Comparación de Sistemas
+
+## 1. Sistema desarrollado (Red de Intercambio de Alimentos)
+- Permite a los usuarios registrarse e iniciar sesión.
+- Registro sencillo con validación básica (usuario, correo y contraseña).
+- Publicación de alimentos con descripción, fecha de caducidad, imagen y ubicación.
+- Consulta rápida de alimentos disponibles.
+- Rol de administrador para control básico.
+- Enfoque en **evitar desperdicio de alimentos**.
+
+## 2. Sistema comparado: Facebook Marketplace
+- Mayor alcance de usuarios.
+- Permite publicar alimentos pero no está diseñado para donaciones específicas.
+- No tiene validación de caducidad ni control de usuarios.
+- Puede haber fraudes o publicaciones engañosas.
+
+## 3. Sistema comparado: Banco de Alimentos (Costa Rica)
+- Control centralizado y supervisado.
+- Validación estricta de productos y beneficiarios.
+- Limitado solo a organizaciones, no a usuarios comunes.
+- No es tan accesible ni inmediato como una aplicación web.
+
+## 4. Análisis comparativo
+- Nuestro sistema es **más accesible y simple** que un banco de alimentos.
+- Tiene **más control de caducidad** que Facebook Marketplace.
+- A diferencia de otros, se centra exclusivamente en la **solidaridad y el intercambio de alimentos**.
