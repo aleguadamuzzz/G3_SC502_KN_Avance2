@@ -28,7 +28,6 @@ proyecto/
 ├── reservar.php 
 ├── mensajes.php 
 ├── panel.php
-├── mapa.php
 ├── admin.php
 ├── check_session.php
 ├── logout.php
